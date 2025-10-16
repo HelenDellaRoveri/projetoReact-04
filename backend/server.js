@@ -70,3 +70,22 @@ app.post('/auth/login', async (req, res) => {
     user: { id: user.id, name: user.name, email: user.email }
   });
 });
+
+//Rota protegida
+app.get('/protected', (req, res) => {
+  const authHeader = req.headers.authorization;
+  if(!authHeader) return res.status(401).json({ msg: 'Token não oferecido!'});
+
+  const token = authHeader.split(' ')[1];
+  try{
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'minhaChaveSuperSecreta');
+    res.json({ msg: 'Acesso Autorizado! '}, decoded );
+  }catch(err){
+    res.status(401).json({ msg: 'Token inválido! '});
+  }
+});
+
+app.get('/users', async(req, res) => {
+  const users = await database.list();
+  res.json(users);
+})
