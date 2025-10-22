@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+import React from "react";                                                            
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider } from '../auth/AuthContext';
+import PrivateRoute from '../auth/PrivateRoute';
 
-export default App;
+//Componentes principais
+import Logo from '../componentes/template/Logo'
+import Nav from '../componentes/template/Nav'
+
+//Páginas
+import Login from '../components/user/LoginForm';
+import Register from '../components/user/RegisterForm';
+import UserCrud from '../components/user/UserCrud';
+import Home from  '../components/home/Home';
+import Footer from '../components/template/Footer';
+
+function App(){
+    return(
+        <AuthProvider>
+            <Router>
+                <div className="app">
+                    {/* layout principal com grid e sem fundo branco */}
+                    {/* Exibe a estrutura fixa apenas se o usuário estiver logado */}
+                </div>
+            </Router>
+        </AuthProvider>
+    )
+}
