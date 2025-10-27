@@ -1,0 +1,38 @@
+/* alvo direto dentro do container para evitar conflito com bootstrap global */
+.table-container thead,
+.table-container thead th{
+    background-color: #003366 !important;
+    color: #fff !important;
+}
+
+.table-container thead{
+    border-radius: 5px;
+}
+
+/* Ocupa altura total da tela e impede scroll da página */
+.main-content{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 140px); /* ajusta ao tamanho da tela menos o header */
+    overflow: hidden ;
+}
+
+/* formulario fixo no topo da tabela rolável */
+.form{
+    margin-bottom: 12px;
+}
+
+
+/* Mantém o tabela com scroll interno */
+.table-container{
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Cabeçalhos fixo e colorido */
+.table-container thead th{
+    
+}
